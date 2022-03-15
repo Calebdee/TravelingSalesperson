@@ -1,0 +1,50 @@
+3.58
+long decode2(long x, long y, long z) {
+	y -= z;
+	x *= y;
+	long key = y;
+	key <<= 63;
+	key >>= 63; // Arithmetic right shift
+	key ^= x;
+	return key;
+}
+
+
+3.60
+	A.
+		x is stored in %rdi initially, and then moved to %r8
+		n is stored in %esi initially, and then moved to %ecx
+		result is stored in %rax
+		mask is stored in %rdx
+	B. 
+		result is initally set to 0
+		mask is initally set to 1
+
+	C.
+		mask != 0
+	D. 
+		We will update mask by left-shifting 8-bits of "n"
+	E. 
+		We will update result on each iteration of our for loop, first taking the anded outcome of x and mask,
+		and then xor'ing this with our current value of result.
+	F. 
+		long loop (long x, long n)
+		{
+			long result = 0;
+			long mask;
+			for (mask = 1; mask != 0; mask = mask << n) 
+			{
+				result | = (x&mask)
+			}
+		}
+
+3.65
+	A.
+		%rdx
+	B. 
+		%rax
+	C.
+		It appears that rows are 120 bytes, elements are 8 bytes, so M is 15 (120/8)
+
+3.66
+	NR Gives the number of 
